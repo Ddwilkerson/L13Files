@@ -21,11 +21,11 @@ using namespace std;
 class MyApp: public wxApp
 {
     bool OnInit();
- 
+
     wxFrame* frame;
     DrawPanel* drawPane;
 public:
- 
+
 };
 
 IMPLEMENT_APP(MyApp)
@@ -33,7 +33,7 @@ IMPLEMENT_APP(MyApp)
 //int main(int argc, char** argv)
 bool MyApp::OnInit()
 {
-ListArray<CD>* cds = CD::readCDs("cds.txt");
+ListArray<CD>* cds = CD::readCDs("alphabet.txt");
    int num_items = cds->size();
    cout << num_items << endl;
 
@@ -49,17 +49,17 @@ ListArray<CD>* cds = CD::readCDs("cds.txt");
    //sh->heapRemove();
    delete cds;
 
- 
+
     wxBoxSizer* sizer = new wxBoxSizer(wxHORIZONTAL);
     frame = new wxFrame((wxFrame *)NULL, -1,  wxT("Heap Skew"), wxPoint(500,500), wxSize(1100,600));
- 
+
     drawPane = new DrawPanel((wxFrame*) frame, sh);
 
     sizer->Add(drawPane, 1, wxEXPAND);
- 
+
     frame->SetSizer(sizer);
     frame->SetAutoLayout(true);
- 
+
     frame->Show();
     return true;
    return 0;

@@ -28,7 +28,7 @@ void deleteCDs(ListArray<CD>* list)
 
 int main()
 {
-   ListArray<CD>* cds = CD::readCDs("cds.txt");
+   ListArray<CD>* cds = CD::readCDs("alphabet.txt");
    int num_items = cds->size();
    cout << num_items << endl;
 
