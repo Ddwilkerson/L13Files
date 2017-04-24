@@ -84,11 +84,15 @@ BinaryTree<T>* HeapSkew<T>::merge(BinaryTree<T>* left, BinaryTree<T>* right)
 	if(left_right->isEmpty())
 	{
 		result->attachLeftSubtree(right);
+		delete left_left;
+		delete left_right;
 		return result;
 	}
 	else
 	{
 		result->attachLeftSubtree( merge(left_right,right) );
+		delete left_left;
+		delete left_right;
 		return result;
 	}
 }
@@ -110,6 +114,8 @@ T* HeapSkew<T>::heapRemove()
 	 BinaryTree<T>* left = bt->detachLeftSubtree();
 	 BinaryTree<T>* right = bt->detachRightSubtree();
 	 bt = merge(right,left);
+	 delete left;
+	 delete right;
 
 	 return item;
 }
