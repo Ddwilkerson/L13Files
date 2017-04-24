@@ -33,7 +33,7 @@ IMPLEMENT_APP(MyApp)
 //int main(int argc, char** argv)
 bool MyApp::OnInit()
 {
-ListArray<CD>* cds = CD::readCDs("alphabet.txt");
+ListArray<CD>* cds = CD::readCDs("cds.txt");
    int num_items = cds->size();
    cout << num_items << endl;
 

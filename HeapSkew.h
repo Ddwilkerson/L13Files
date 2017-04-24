@@ -69,24 +69,27 @@ BinaryTree<T>* HeapSkew<T>::merge(BinaryTree<T>* left, BinaryTree<T>* right)
 
 	if(compare < 0)
 	{
-		left = merge(right, left);
-		return left;
-	}
-
-	BinaryTree<T>* left_left = left->detachLeftSubtree();
-	BinaryTree<T>* left_right = left->detachRightSubtree();
-
-	left_right->attachRightSubtree(left_left);
-
-	if(left_right->isEmpty())
-	{
-		left_left->attachRightSubtree(right);
-		return left;
+		result = merge(right, left);
 	}
 	else
 	{
-		left_left->attachRightSubtree( merge(left_right,right) );
-		return left;
+		result = left;
+	}
+
+	BinaryTree<T>* left_left = result->detachLeftSubtree();
+	BinaryTree<T>* left_right = result->detachRightSubtree();
+
+	result->attachRightSubtree(left_left);
+
+	if(left_right->isEmpty())
+	{
+		result->attachLeftSubtree(right);
+		return result;
+	}
+	else
+	{
+		result->attachLeftSubtree( merge(left_right,right) );
+		return result;
 	}
 }
 
